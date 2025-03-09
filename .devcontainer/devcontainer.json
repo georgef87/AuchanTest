@@ -1,0 +1,13 @@
+{
+    "name": "ASP.NET Core Web API",
+    "dockerFile": "../Dockerfile-dev",
+    "appPort": [80],
+    "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-vscode.vscode-node-azure-pack"
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": "dotnet restore"
+}

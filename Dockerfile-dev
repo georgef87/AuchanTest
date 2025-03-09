@@ -1,0 +1,13 @@
+# Use the 8.0 SDK image for building the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["AuchanTest.csproj", "./"]
+RUN dotnet restore "./AuchanTest.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "AuchanTest.csproj" -c Release -o /app/build
+
+#run dev container
+FROM build AS dev
+WORKDIR /src
+ENTRYPOINT ["dotnet", "watch", "run"]
